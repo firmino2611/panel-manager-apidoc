@@ -1,0 +1,26 @@
+{
+    "name": "firmino/apidoc",
+    "description": "Pacote com painel para gerenciamento de documentacao de API's",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Firmino",
+            "email": "lucasfirmino_dev@hotmail.com"
+        }
+    ],
+    "require": {},
+     "autoload": {
+        "psr-4": {
+            "Package\\Firmino\\": "./"
+        }
+    },
+    "extra": {
+        "providers": [
+            "Package\\Firmino\\Apidoc\\Providers\\ApiDocServiceProvider"
+        ],
+        "aliases": {
+            "Doc": "Package\\Firmino\\Apidoc\\Facades\\Apidoc"
+        }
+    }
+}

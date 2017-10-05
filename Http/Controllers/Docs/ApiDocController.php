@@ -22,7 +22,7 @@ class ApiDocController extends Controller
             $api = ApiDoc::create([
                 'name' => $request->name,
                 'description' => $request->description,
-                'version' => $request->version,
+                'version' => 'v' . $request->version,
                 'base_url' => $request->base_url
             ]);
 

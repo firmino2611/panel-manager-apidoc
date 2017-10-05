@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
 
     public function index($version){
-        $api = ApiDoc::where('version', 'like', '%1.%')->get()[0];
+        $api = ApiDoc::where('version', 'like', '%'. $version .'%')->get()[0];
 
         if(!isset($api))
             return "pagina em manutencao";

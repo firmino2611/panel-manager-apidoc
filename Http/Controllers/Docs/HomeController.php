@@ -18,12 +18,12 @@ class HomeController extends Controller
     }
 
     public function index($version){
-        $api = ApiDoc::where('version', 'like', '%'. $version .'%')->get()[0];
+        $api = ApiDoc::where('version', 'like', '%'. $version .'%')->get();
 
-        if(!isset($api))
-            return "pagina em manutencao";
-
-        return view('Apidoc::docs.index', compact('api'));
+        if(!isset($api[0]))
+            return "Versao da api incorreta";
+        else
+            return view('Apidoc::docs.index')->with('api', $api[0]);
     }
 
     public function createCodeStatus(){

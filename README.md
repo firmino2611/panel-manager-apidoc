@@ -35,6 +35,16 @@ Rode as migrações
 
 <pre>php artisan migrate</pre>
 
+## Facade
+
+O Facade disponivel no momento possui apenas dois métodos
+
+<pre>getApis()</pre>
+Retorna todas as Apis cadastrada
+
+<pre>getParameters()</pre>
+Retorna todos os parametros registrados
+
 
 
 

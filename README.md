@@ -39,10 +39,10 @@ Rode as migrações
 
 O Facade disponivel no momento possui apenas dois métodos
 
-<pre>getApis()</pre>
+#### getApis()
 Retorna todas as Apis cadastrada
 
-<pre>getParameters()</pre>
+#### getParameters()
 Retorna todos os parametros registrados
 
 

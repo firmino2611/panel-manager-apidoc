@@ -16,7 +16,7 @@ class CreateApiDocsTable extends Migration
         Schema::create('api_docs', function (Blueprint $table) {
             $table->increments('id');
             $table->text('base_url');
-            $table->string('version', 5);
+            $table->string('version', 6);
             $table->string('name', 50);
             $table->text('description');
             $table->timestamps();

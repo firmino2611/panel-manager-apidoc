@@ -1,6 +1,6 @@
 <?php
 
-namespace Package\firmino\Apidoc\Http\Controllers\Docs;
+namespace Package\Firmino\Apidoc\Http\Controllers\Docs;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

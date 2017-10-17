@@ -21,7 +21,6 @@ class CreateResourcesTable extends Migration
             $table->text('description');
             $table->text('example_parameter')->nullable();
             $table->text('example_response')->nullable();
-            $table->boolean('depreciated')->default(false);
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/apidoc', 'ApiDocController@index');
+Route::get(config('apidoc.route'), 'ApiDocController@index');
 
 // Rotas para gerenciar a documetacao da API
 Route::group(['prefix'=>'api-doc'], function(){

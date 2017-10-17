@@ -32,7 +32,13 @@ return [
 			'layout-boxed'	
 		]
 	],
-
-
+	/*
+	|------------------------------------------------
+	|	Default route
+	|------------------------------------------------
+	|	Default route to grant access panel
+	|
+	*/
+	'route' => 'apidoc'
 
 ];

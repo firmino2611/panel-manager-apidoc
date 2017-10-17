@@ -16,6 +16,7 @@ class CreateApiResourcesTable extends Migration
         Schema::create('api_resources', function (Blueprint $table) {
             $table->integer('api_doc_id')->unsigned();
             $table->integer('resource_id')->unsigned();
+            $table->boolean('depreciated')->default(false);
 
             $table->foreign('api_doc_id')
                 ->references('id')

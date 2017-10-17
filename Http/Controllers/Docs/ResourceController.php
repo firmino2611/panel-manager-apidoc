@@ -31,12 +31,11 @@ class ResourceController extends Controller
                     ->with('apiDoc', ApiDoc::find($api));
     }
 
-    public function updateResource(Request $request){
-       // dd($request->all());
+     public function updateResource(Request $request){
+
         $apiId = $request->route()->parameter('apiId');
         $params = Parameter::find($request->parameter);
 
-//        dd($request->all());
         $resource = Resource::find($request->route()
             ->parameter('resourceId'));
 
@@ -45,10 +44,19 @@ class ResourceController extends Controller
             'endpoint' => $request->endpoint,
             'method' => $request->method,
             'description' => $request->description,
-            'depreciated' => $request->depreciated == 'on' ?? false,
             'example_parameter' => $request->example_parameter,
             'example_response' => $request->example_response,
         ));
+
+        DB::select('update api_resources set depreciated = ?
+                     where api_doc_id = ? and
+                     resource_id = ?', [
+                            $request->depreciated == 'on' ? true : false ,
+                            $apiId,
+                            $resource->id
+                     ]);
+
+        //dd($request->depreciated == 'on' ? true : false )
 
 // ---------------------------------------------------------------------------------
         foreach ($resource->parameters as  $p)
@@ -60,7 +68,8 @@ class ResourceController extends Controller
                 if (!$resource->hasParameter($p->id))
                     ResourceParameter::create(array(
                         'parameter_id' => $p->id,
-                        'resource_id' => $resource->id
+                        'resource_id' => $resource->id,
+                        'depreciated' => $request->depreciated
                     ));
             }
         }
@@ -69,12 +78,7 @@ class ResourceController extends Controller
 
         for ($i = 0; $i < count($request->p_field); $i++) {
             if ($request->p_field[$i]){
-                if (isset($request->p_id[$i])) {
-                    $param = Parameter::find($request->p_id[$i]);
-                }else{
-                    $param = null;
-                }
-                
+                $param = Parameter::find($request->p_id[$i]);
 
                 if (!$param){
                     $param = Parameter::create(array(
@@ -126,8 +130,11 @@ class ResourceController extends Controller
             'message' => 'Dadso alterados com sucesso.'
         ]);
 
+        //\Event::fire(new ResourceUpdated($resource));
+
         return redirect()->route('resource.edit', [$resource->id, $apiId]);
     }
+
 
     public function saveResource(Request $request){
 
@@ -138,7 +145,6 @@ class ResourceController extends Controller
             'endpoint' => $request->endpoint,
             'method' => $request->method,
             'description' => $request->description,
-            'depreciated' => $request->depreciated ?? false,
             'example_parameter' => $request->example_parameter,
             'example_response' => $request->example_response,
         ));
@@ -146,6 +152,7 @@ class ResourceController extends Controller
         ApiResource::create(array(
            'api_doc_id' => $request->api_doc_id,
            'resource_id' => $resource->id,
+            'depreciated' => $request->depreciated == 'on' ? true : false ,
         ));
 
         if($params){

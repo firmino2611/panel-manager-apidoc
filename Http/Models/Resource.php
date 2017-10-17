@@ -36,4 +36,11 @@ class Resource extends Model
         return false;
     }
 
+     public static function hasDepreciated($api, $resource){
+        $api = ApiResource::where('api_doc_id',$api )
+                        ->where('resource_id', $resource)->get()->first();
+
+        return $api->depreciated;
+    }
+
 }

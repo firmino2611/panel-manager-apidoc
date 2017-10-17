@@ -64,7 +64,7 @@
                         </div>
                         <div class="form-group ">
                             <label style="font-size: 13pt" class="label label-warning">Depreciado: </label>
-                            <input {{ $resource->depreciated ? 'checked' : ''}} name="depreciated" type="checkbox" style="margin-left: 10px" >
+                             <input {{ App\Resource::hasDepreciated($apiDoc->id, $resource->id) ? 'checked' : ''}} name="depreciated" type="checkbox" style="margin-left: 10px" >
                         </div>
                     </div>
                 </div>

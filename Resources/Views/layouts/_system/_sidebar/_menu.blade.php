@@ -9,7 +9,7 @@
     </a>
     <ul class="treeview-menu">
         @foreach(Doc::getApis() as $api)
-            <li><a href="{{ route('doc.index', 'v'.explode('.', $api->version)[0]) }}" target="_blank"><i class="fa  fa-circle-o"></i> {{$api->version }}</a></li>
+            <li><a href="{{ route('doc.index', explode('.', $api->version)[0]) }}" target="_blank"><i class="fa  fa-circle-o"></i> {{$api->version }}</a></li>
         @endforeach
     </ul>
 </li>

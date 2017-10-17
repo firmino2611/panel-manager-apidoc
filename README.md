@@ -4,7 +4,7 @@ Este pacote está em desenvolvimento, porém ja é possível usa-lo para gerenci
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
-Para mais detalhes veja a documentação completa [![Wiki](https://github.com/firmino2611/panel-manager-apidoc/wiki)]()
+Para mais detalhes veja a documentação completa [![Wiki](https://github.com/firmino2611/panel-manager-apidoc/wiki)]() **(ainda em construção)**
 # Instalação
 
 Instalando via composer

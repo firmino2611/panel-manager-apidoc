@@ -12,4 +12,6 @@ class Field extends Model
     public function entity(){
         return $this->belongsTo(Entity::class);
     }
+
+
 }

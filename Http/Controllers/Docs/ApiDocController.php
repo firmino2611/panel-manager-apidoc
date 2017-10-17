@@ -15,28 +15,31 @@ class ApiDocController extends Controller
     }
  	
  	public function saveApiDoc(Request $request){
-//        dd($request->all());
+        //dd($request->all());
         $version = ApiDoc::where('version', $request->version)->get();
 
         if (count($version) == 0) {
             $api = ApiDoc::create([
                 'name' => $request->name,
                 'description' => $request->description,
-                'version' => 'v' . $request->version,
+                'version' =>  'v' . $request->version,
                 'base_url' => $request->base_url
             ]);
 
-            for ($i = 0; $i < count($request->name_header); $i++){
-                HttpHeader::create([
-                    'name' => $request->name_header[$i],
-                    'description' => $request->description_header[$i],
-                    'api_doc_id' => $api->id
-                ]);
+            if (isset($request->name_header[0])) {
+                for ($i = 0; $i < count($request->name_header); $i++){
+                    HttpHeader::create([
+                        'name' => $request->name_header[$i],
+                        'description' => $request->description_header[$i],
+                        'api_doc_id' => $api->id
+                    ]);
+                }
             }
+            
 
             \Session::flash('alert', [
                 'class' => 'success',
-                'message' => 'Api Doc criada com sucesso.'
+                'message' => 'Api Doc craido com sucesso.'
             ]);
 
             return redirect()->route('apidoc.create');

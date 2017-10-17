@@ -52,4 +52,30 @@ class HomeController extends Controller
         return redirect()->route('codestatus.create');
     }
 
+    public function editCodeStatus($id, $api){
+        return view('Apidoc::forms.edit.code-status')
+                    ->with('code', CodeStatus::find($id))
+                    ->with('api', ApiDoc::find($api));
+    }
+
+    public function updateCodeStatus(Request $request, $id, $api){
+        $code = CodeStatus::find($id);
+
+        $code->update([
+            'code' => $request->code,
+            'error' => $request->error,
+            'description' => $request->description
+        ]);
+
+        $code = CodeStatus::find($id);
+        $api = ApiDoc::find($api);
+
+        \Session::flash('alert', [
+            'class' => 'success',
+            'message' => 'Codigo de status criados com sucesso.'
+        ]);
+
+        return redirect()->route('codestatus.edit', [$code, $api]);
+    }
+
 }

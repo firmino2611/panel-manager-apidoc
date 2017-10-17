@@ -61,7 +61,7 @@
     </section>
 
     <section class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="box box-danger">
                 <div class="box-header">
                     <h4>Recursos da API</h4>
@@ -72,6 +72,7 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Endpoint</th>
+                                <th>Método</th>
                                 <th>Acoes</th>
                             </tr>
                         </thead>
@@ -80,6 +81,7 @@
                             <tr>
                                 <td> <a href="" class=""></a> {{ $resource->name }}</td>
                                 <td> <a href="" class=""></a> {{ $resource->endpoint }}</td>
+                                <td> <a href="" class=""></a> {{ $resource->method }}</td>
                                 <td>
                                     <a href="{{ route('resource.edit', [$resource->id, $api->id]) }}" class="" style="margin-right: 10px"><i class="fa  fa-edit" ></i> Editar</a>
                                     <a href="" class=""><i class="fa  fa-trash"></i> Excluir</a>
@@ -91,7 +93,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="box box-danger">
                 <div class="box-header">
                     <h4>Entidades da API</h4>
@@ -112,6 +114,71 @@
                                 <td> <a href="" class=""></a> {{ $entity->name }}</td>
                                 <td>
                                     <a href="{{ route('entity.edit', [$entity->id, $api->id]) }}" class="" style="margin-right: 10px"><i class="fa  fa-edit" ></i> Editar</a>
+                                    <a href="" class=""><i class="fa  fa-trash"></i> Excluir</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="col-md-6">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h4>Códigos de Status HTTP</h4>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Codigo</th>
+                                <th>Erro</th>
+                                <th>Acoes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($api->codeStatus as $code)
+                            <tr>
+                                <td> <a href="" class=""></a> {{ $code->id }}</td>
+                                <td> <a href="" class=""></a> {{ $code->code }}</td>
+                                <td> <a href="" class=""></a> {{ $code->error }}</td>
+                                <td>
+                                    <a href="{{ route('codestatus.edit', [$code->id, $api->id]) }}" class="" style="margin-right: 10px"><i class="fa  fa-edit" ></i> Editar</a>
+                                  {{--   <a href="" class=""><i class="fa  fa-trash"></i> Excluir</a> --}}
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h4>HTTP Headers</h4>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Nome</th>
+                                <th>Acoes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($api->httpHeaders as $header)
+                            <tr>
+                                <td> <a href="" class=""></a> {{ $header->id }}</td>
+                                <td> <a href="" class=""></a> {{ $header->name }}</td>
+                                <td>
+                                    <a href="{{ route('header.edit', [$header->id, $api->id]) }}" class="" style="margin-right: 10px"><i class="fa  fa-edit" ></i> Editar</a>
                                     <a href="" class=""><i class="fa  fa-trash"></i> Excluir</a>
                                 </td>
                             </tr>

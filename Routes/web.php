@@ -13,8 +13,8 @@ Route::group(['prefix'=>'api-doc'], function(){
 Route::group(['prefix'=>'resource'], function (){
     Route::get('/create', ['uses'=>'Docs\ResourceController@createResource', 'as'=>'resource.create']);
     Route::post('/save', ['uses'=>'Docs\ResourceController@saveResource', 'as'=>'resource.save']);
-    Route::get('/{resourceId}/api/{apiId}/edit', ['uses'=>'Docs\ResourceController@editResource', 'as'=>'resource.edit']);
-    Route::put('/update/{resourceId}/api/{apiId}/update', ['uses'=>'Docs\ResourceController@updateResource', 'as'=>'resource.update']);
+    Route::get('/{resourceId}/api/{api}/edit', ['uses'=>'Docs\ResourceController@editResource', 'as'=>'resource.edit']);
+    Route::put('/update/{resourceId}/api/{api}/update', ['uses'=>'Docs\ResourceController@updateResource', 'as'=>'resource.update']);
 });
 
 Route::group(['prefix'=>'entity'], function (){
@@ -27,6 +27,12 @@ Route::group(['prefix'=>'entity'], function (){
 Route::group(['prefix'=>'code-status'], function (){
     Route::get('/create', ['uses'=>'Docs\HomeController@createCodeStatus', 'as'=>'codestatus.create']);
     Route::post('/save', ['uses'=>'Docs\HomeController@saveCodeStatus', 'as'=>'codestatus.save']);
+    Route::get('/edit/{id}/api/{api}', ['uses'=>'Docs\HomeController@editCodeStatus', 'as'=>'codestatus.edit']);
+    Route::put('/edit/{id}/api/{api}', ['uses'=>'Docs\HomeController@updateCodeStatus', 'as'=>'codestatus.update']);
+});
+
+Route::group(['prefix'=>'header'], function(){
+    Route::get('/edit/{id}/api/{api}', ['uses'=>'Docs\HomeController@editHeader', 'as'=>'header.edit']);
 });
 
 Route::get('/doc/{version}', ['uses'=>'Docs\HomeController@index', 'as'=>'doc.index']);

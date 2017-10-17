@@ -12,4 +12,6 @@ class CodeStatus extends Model
     public function apiDocs(){
         return $this->belongsToMany(ApiDoc::class, 'api_code_status');
     }
+
+ 
 }

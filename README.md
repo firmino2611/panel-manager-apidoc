@@ -42,7 +42,7 @@ Rode as migrações
 
 ## Testando
 
-Acesse a rota padrão <i>/apidoc</i> para visualizar o painel.
+Acesse a rota padrão <i>/apidoc</i> para visualizar o painel. Esta informação pode ser alterada no arquivo de configurações.
 
 ## Facade
 

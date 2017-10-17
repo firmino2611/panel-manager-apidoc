@@ -1,5 +1,6 @@
 # Panel Manager Api Doc
-Pacote para gerenciamento de documentação de API
+Pacote para gerenciamento de documentação de API.
+Este pacote está em desenvolvimento, porém ja é possível usa-lo para gerenciar a documentação de suas API's.
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
@@ -8,6 +9,10 @@ Pacote para gerenciamento de documentação de API
 Instalando via composer
 
 <pre>composer require firmino/apidoc</pre>
+
+Instalando manualmente, adicione a seguinte linha em seu arquivo <i>composer.json</i>:
+
+<pre>"firmino/apidoc": "dev-master"</pre>
 
 Registre o ServiceProvider em <i>config/app.php</i> 
 
@@ -34,6 +39,10 @@ Execute o comando abaixo para publicar os arquivos necessários para a configura
 Rode as migrações 
 
 <pre>php artisan migrate</pre>
+
+## Testando
+
+Acesse a rota padrão <i>/apidoc</i> para visualizar o painel.
 
 ## Facade
 

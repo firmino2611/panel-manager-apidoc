@@ -9,38 +9,37 @@ Para mais detalhes veja a documentação completa [![Wiki](https://github.com/fi
 
 Instalando via composer
 
-<pre>composer require firmino/apidoc</pre>
+```javascript composer require firmino/apidoc ```
 
 Instalando manualmente, adicione a seguinte linha em seu arquivo <i>composer.json</i>:
 
-<pre>"firmino/apidoc": "dev-master"</pre>
+```javascript "firmino/apidoc": "dev-master" ```
 
 Registre o ServiceProvider em <i>config/app.php</i> 
 
-<pre>
+```php
 'providers' => [
       Package\Firmino\Apidoc\Providers\ApiDocServiceProvider::class,
 ]
-</pre>
+```
 
 Registre também o Facade no mesmo arquivo 
 
-<pre>
+```php
 'aliases' => [
       'Doc' => Package\Firmino\Apidoc\Facades\Apidoc::class,
 ]
-</pre>
+```
 
 ## Publicando arquivos
 
 Execute o comando abaixo para publicar os arquivos necessários para a configuração do painel
 
-<pre>php artisan vendor:publish --provider="Package\Firmino\Apidoc\Providers\ApiDocServiceProvider"</pre>
+```php php artisan vendor:publish --provider="Package\Firmino\Apidoc\Providers\ApiDocServiceProvider" ```
 
 Rode as migrações 
 
-<pre>php artisan migrate</pre>
-
+```php php artisan migrate ```
 ## Testando
 
 Acesse a rota padrão <i>/apidoc</i> para visualizar o painel. Esta informação pode ser alterada no arquivo de configurações.
